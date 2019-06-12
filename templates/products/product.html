@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                {% for image_item in product.productimage_set.all %}
+                    <div class="product-image-item">
+                        <img src="{{ image_item.image.url }}" class="img-fluid">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-6">
+                <h1 class="text-center">
+                    {{ product.name }}
+                </h1>
+                <div class="">
+                    <p>
+                        Price: {{ product.price }} RUB
+                    </p>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#description" role="tab"
+                               aria-controls="home" aria-selected="true">Описание</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#delivery" role="tab"
+                               aria-controls="profile" aria-selected="false">Доставка</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                               aria-controls="contact" aria-selected="false">Контакты</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product-description-tabs" id="myTabContent">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            {{ product.description }}
+                        </div>
+                        <div class="tab-pane fade" id="delivery" role="tabpanel" aria-labelledby="profile-tab">
+                            <h5 class="text-center">Как мы делаем доставку...</h5>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <h5 class="text-center">super_vg@bk.ru</h5>
+                        </div>
+                    </div>
+                    <div>
+                    <form id="form_buying_product" class="form-inline" action="{% url 'basket_adding' %}">{% csrf_token %}
+                        <div class="form-group">
+                        <input type="number" class="form-control" name="number" id="number">
+                        </div>
+
+                        <div>
+                            <button type="submit" id="submit-btn" class="btn btn-success btn-buy"
+                                    data-product_id="{{ product.id }}"
+                                    data-name="{{ product.name }}"
+                                    data-price="{{ product.price }}">Купить</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
