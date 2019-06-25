@@ -7,7 +7,7 @@ DATABASES = {
         'NAME': 'db1',
         'USER': 'django_shop',
         'PASSWORD': '1888vict',
-        'HOST': '127.0.0.1',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
