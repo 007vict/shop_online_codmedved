@@ -7,7 +7,7 @@ DATABASES = {
         'NAME': 'djashopmedv',
         'USER': 'djles_db',
         'PASSWORD': '1888vict',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '',
     }
 }
